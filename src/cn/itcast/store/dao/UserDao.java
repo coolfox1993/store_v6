@@ -6,12 +6,14 @@ import cn.itcast.store.domain.User;
 
 public interface UserDao {
 
-	void userRgsit(User user)throws SQLException;
+	User findUserByUsreName(String um) throws SQLException;
 
-	User userActive(String code) throws SQLException;
+	void userRegist(User user01)throws SQLException;
 
-	void updateUser(User user) throws SQLException;
+	User userActive(String code)throws SQLException;
 
-	User userLogin(User user) throws SQLException;
+	void updateUser(User user01)throws SQLException;
+
+	User userLogin(User user01)throws SQLException;
 
 }

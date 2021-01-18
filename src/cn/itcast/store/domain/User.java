@@ -3,7 +3,6 @@ package cn.itcast.store.domain;
 import java.util.Date;
 
 public class User {
-	
 	private String uid;
 	private String username;
 	private String password;
@@ -12,8 +11,8 @@ public class User {
 	private String telephone;
 	private Date birthday;
 	private String sex;
-	private int state;
-	private String code;
+	private int state; //#状态：0=未激活，1=已激活
+	private String code; //#激活码
 	public String getUid() {
 		return uid;
 	}
@@ -74,9 +73,6 @@ public class User {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public User() {
-		super();
-	}
 	public User(String uid, String username, String password, String name, String email, String telephone,
 			Date birthday, String sex, int state, String code) {
 		super();
@@ -90,6 +86,11 @@ public class User {
 		this.sex = sex;
 		this.state = state;
 		this.code = code;
+	}
+	
+	
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

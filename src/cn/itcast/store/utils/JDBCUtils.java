@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class JDBCUtils {
-	private static ComboPooledDataSource ds = new ComboPooledDataSource();
+	private static ComboPooledDataSource ds = new ComboPooledDataSource("itcast");
 	private static ThreadLocal<Connection> tl=new ThreadLocal<>();
 	
 	/**
@@ -125,10 +125,11 @@ public class JDBCUtils {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) throws Exception {
-		// 数据库测试连接
-		Connection connection = getConnection();
-		System.out.println(connection);
+	public static void main(String[] args) {
+		try {
+			System.out.println(getConnection());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

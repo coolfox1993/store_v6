@@ -11,36 +11,46 @@ import cn.itcast.store.utils.JDBCUtils;
 
 public class UserDaoImp implements UserDao {
 
-	public void userRgsit(User user) throws SQLException {
-		String sql = "INSERT INTO `user` VALUES(?,?,?,?,?,?,?,?,?,?)";
-		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		queryRunner.update(sql, user.getUid(),user.getUsername(),user.getPassword(),user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),user.getSex(),user.getState(),user.getCode());
+	@Override
+	public User userLogin(User user01) throws SQLException {
+		String sql="select * from user where username =? and password=? and state=1";
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanHandler<User>(User.class),user01.getUsername(),user01.getPassword());
 		
+	}
+
+	@Override
+	public User findUserByUsreName(String um) throws SQLException {
+		String sql="select * from user where username=?";
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanHandler<User>(User.class),um);
 		
+	}
+
+	@Override
+	public void userRegist(User user01) throws SQLException {
+		String sql="INSERT INTO USER VALUES(?,?,?,?,?,?,?,?,?,?)";
+		Object[] params={user01.getUid(),user01.getUsername(),user01.getPassword(),user01.getName(),user01.getEmail(),user01.getTelephone(),user01.getBirthday(),user01.getSex(),user01.getState(),user01.getCode()};
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql,params);
 	}
 
 	@Override
 	public User userActive(String code) throws SQLException {
-		String sql = "SELECT * FROM `user` WHERE `code` = ?";
-		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		User user = queryRunner.query(sql, new BeanHandler<>(User.class),code);
-		return user;
+		String sql="select * from user where code =?";
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanHandler<User>(User.class),code);
+		
 	}
 
 	@Override
-	public void updateUser(User user) throws SQLException {
-		// 用户激活状态更新
-		String sql = "update user set username=?, password=?, name=?,email=?,telephone=?,birthday=?,sex=?,state=?,code=? where uid=?";
-		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		Object[] params = {user.getUsername(),user.getPassword(),user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),user.getSex(),user.getState(),user.getCode(),user.getUid()};
-		queryRunner.update(sql, params);
+	public void updateUser(User user01) throws SQLException {
+		String sql="UPDATE USER SET username= ? ,PASSWORD=? ,NAME =? ,email =? ,telephone =? , birthday =?  ,sex =? ,state= ? , CODE = ? WHERE uid=?";
+		Object[] params={user01.getUsername(),user01.getPassword(),user01.getName(),user01.getEmail(),user01.getTelephone(),user01.getBirthday(),user01.getSex(),user01.getState(),user01.getCode(),user01.getUid()};
+		QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql,params);
 	}
 
-	@Override
-	public User userLogin(User user) throws SQLException {
-		String sql = "SELECT * FROM `user` WHERE `username` = ? and password=?";
-		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		return queryRunner.query(sql, new BeanHandler<User>(User.class), user.getUsername(),user.getPassword());
-	}
-
+	
+	
 }

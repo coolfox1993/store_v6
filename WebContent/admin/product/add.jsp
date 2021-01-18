@@ -1,4 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -54,7 +55,7 @@
 						商品图片：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="file" name="upload" />
+						<input type="file" name="pimage" />
 					</td>
 				</tr>
 				<tr>
@@ -63,9 +64,10 @@
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
 						<select name="cid">
-								<option value="1">服装</option>
-								<option value="2">服装2</option>
-								<option value="3">服装3</option>
+							<option value="">请选择</option>
+							<c:forEach items="${allCats}" var="c">	
+								<option value="${c.cid}">${c.cname }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

@@ -1,7 +1,5 @@
 package cn.itcast.store.utils;
 
-
-
 import javax.servlet.http.Cookie;
 
 public class CookUtils {
@@ -20,6 +18,7 @@ public class CookUtils {
 					return c;
 				}
 			}
+			return null;
 		}
 		return null;
 	}
