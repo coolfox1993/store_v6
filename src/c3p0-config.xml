@@ -21,9 +21,9 @@
 	<!-- 命名的配置 -->
 	<named-config name="itcast">
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/store_40</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/store_07</property>
 		<property name="user">root</property>
-		<property name="password">123456</property>
+		<property name="password">root</property>
     <!-- 如果池中数据连接不够时一次增长多少个 -->
 		<property name="acquireIncrement">5</property>
 		<property name="initialPoolSize">20</property>
