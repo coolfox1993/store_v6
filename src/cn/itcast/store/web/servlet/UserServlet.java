@@ -113,7 +113,6 @@ public class UserServlet extends BaseServlet {
 				response.addCookie(ck);
 			}
 			
-			
 			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		}else{
 			//登录失败,向request放入提示信息,转发到登录页面,显示提示userLogin	
