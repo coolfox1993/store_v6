@@ -117,7 +117,7 @@ public class OrderServlet extends BaseServlet {
 				String p6_Pcat = "";
 				String p7_Pdesc = "";
 				//接受响应参数的Servlet
-				String p8_Url = "http://localhost:8080/store_v4/OrderServlet?method=callBack";
+				String p8_Url = "http://localhost:8080/store_v6/OrderServlet?method=callBack";
 				String p9_SAF = "";
 				String pa_MP = "";
 				String pr_NeedResponse = "1";

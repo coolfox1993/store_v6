@@ -99,7 +99,7 @@ public class UserServlet extends BaseServlet {
 			if("yes".equals(autoLogin)){
 				//用户选中自动登录复选框
 				Cookie ck=new Cookie("autoLogin",user02.getUsername()+"#"+user02.getPassword());
-				ck.setPath("/store_v4");
+				ck.setPath("/store_v6");
 				ck.setMaxAge(23423424);
 				response.addCookie(ck);
 			}
@@ -108,7 +108,7 @@ public class UserServlet extends BaseServlet {
 			if("yes".equals(remUser)){
 				//用户选中自动登录复选框
 				Cookie ck=new Cookie("remUser",user02.getUsername());
-				ck.setPath("/store_v4");
+				ck.setPath("/store_v6");
 				ck.setMaxAge(23423424);
 				response.addCookie(ck);
 			}
@@ -129,7 +129,7 @@ public class UserServlet extends BaseServlet {
 		Cookie ck=CookUtils.getCookieByName("autoLogin", request.getCookies());
 		if(null!=ck){
 			ck.setMaxAge(0);
-			ck.setPath("/store_v4");
+			ck.setPath("/store_v6");
 			response.addCookie(ck);
 		}
 		
